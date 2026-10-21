@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Karya - Sigit Ali Fandi</title>
+    <style>
+        :root {
+            --bg-body: #f1f5f9;
+            --paper-bg: #ffffff;
+            --dark: #0f172a;
+            --darker: #1e293b;
+            --primary: #2563eb;
+            --primary-light: #eff6ff;
+            --accent: #0284c7;
+            --gray: #64748b;
+            --gray-light: #f8fafc;
+            --border: #e2e8f0;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--dark);
+            line-height: 1.5;
+            display: flex;
+            justify-content: center;
+            padding: 40px 0;
+        }
+
+        /* WADAH KERTAS A4 */
+        .a4-page {
+            background-color: var(--paper-bg);
+            width: 210mm;
+            min-height: 297mm;
+            height: auto;
+            box-shadow: var(--shadow);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            border-radius: 6px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        /* --- HEADER PORTOFOLIO --- */
+        header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 16mm 20mm 14mm 20mm;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            border-bottom: 4px solid var(--primary);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+
+        .profile-img {
+            width: 125px;
+            height: 125px;
+            border-radius: 16px;
+            object-fit: cover;
+            border: 3px solid rgba(56, 189, 248, 0.4);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        .header-info h1 {
+            font-size: 24pt;
+            font-weight: 800;
+            margin-bottom: 2px;
+            letter-spacing: -0.5px;
+            color: #ffffff;
+        }
+
+        .header-info h2 {
+            font-size: 10.5pt;
+            color: #38bdf8;
+            font-weight: 600;
+            margin-bottom: 12px;
+            letter-spacing: 0.3px;
+        }
+
+        .contacts {
+            display: flex;
+            gap: 16px;
+            font-size: 8.5pt;
+            color: #cbd5e1;
+            flex-wrap: wrap;
+        }
+
+        .contacts span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .contacts a {
+            color: #93c5fd;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .contacts a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        /* --- PROFIL SINGKAT & KEAHLIAN --- */
+        .profile-bar {
+            background-color: var(--gray-light);
+            padding: 10mm 20mm;
+            border-bottom: 1px solid var(--border);
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 24px;
+            align-items: start;
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+
+        .profile-bar h3 {
+            font-size: 9.5pt;
+            text-transform: uppercase;
+            color: var(--primary);
+            margin-bottom: 6px;
+            letter-spacing: 1.2px;
+            font-weight: 700;
+        }
+
+        .about-text {
+            font-size: 9pt;
+            text-align: justify;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        .skills-list-text {
+            font-size: 8.5pt;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        .skills-list-text strong {
+            color: var(--dark);
+        }
+
+        /* --- SHOWCASE PROYEK & SERTIFIKAT --- */
+        .showcase {
+            padding: 12mm 20mm;
+            flex-grow: 1;
+        }
+
+        .section-title {
+            font-size: 14pt;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            page-break-after: avoid;
+            break-after: avoid;
+        }
+
+        .section-title::after {
+            content: "";
+            flex-grow: 1;
+            height: 2px;
+            background: linear-gradient(to right, var(--primary), transparent);
+        }
+
+        .project-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        /* KARTU PROYEK */
+        .project-row {
+            background: white;
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--primary);
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            gap: 16px;
+            padding: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+
+        .project-image-container {
+            width: 180px;
+            height: 120px;
+            flex-shrink: 0;
+            background-color: #f1f5f9;
+            border-radius: 6px;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid var(--border);
+        }
+
+        .project-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-image-container.dual-image-small {
+            display: flex;
+            gap: 4px;
+            padding: 4px;
+            align-items: center;
+            background-color: #f8fafc;
+        }
+
+        .project-image-container.dual-image-small img {
+            width: calc(50% - 2px);
+            height: 100px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .project-badge {
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            background: rgba(15, 23, 42, 0.85);
+            color: white;
+            padding: 2px 6px;
+            font-size: 6.5pt;
+            font-weight: bold;
+            border-radius: 4px;
+            backdrop-filter: blur(4px);
+            z-index: 2;
+        }
+
+        .project-details {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .project-details h4 {
+            font-size: 11pt;
+            margin-bottom: 3px;
+            color: var(--dark);
+            font-weight: 700;
+        }
+
+        .project-details p {
+            font-size: 8.5pt;
+            color: var(--gray);
+            line-height: 1.4;
+            text-align: justify;
+            margin-bottom: 4px;
+        }
+
+        .project-details .tech-stack {
+            font-size: 8pt;
+            color: var(--primary);
+            font-weight: 600;
+            background-color: var(--primary-light);
+            padding: 2px 6px;
+            border-radius: 4px;
+            display: inline-block;
+            width: fit-content;
+            margin-top: 2px;
+        }
+
+        .project-details .result-note {
+            font-size: 8pt;
+            color: #334155;
+            font-style: italic;
+            margin-top: 3px;
+        }
+
+        /* --- KARTU KEGIATAN & SERTIFIKAT --- */
+        .activity-row {
+            background: white;
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--accent);
+            border-radius: 8px;
+            padding: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            page-break-inside: avoid;
+            break-inside: avoid;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .activity-header h4 {
+            font-size: 11pt;
+            color: var(--dark);
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .activity-header p {
+            font-size: 8.5pt;
+            color: var(--gray);
+            line-height: 1.4;
+        }
+
+        .activity-header .tech-stack {
+            font-size: 8pt;
+            color: #0369a1;
+            font-weight: 600;
+            background-color: #e0f2fe;
+            padding: 2px 6px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-top: 4px;
+        }
+
+        .cert-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 4px;
+            padding-top: 10px;
+            border-top: 1px dashed var(--border);
+            justify-content: center;
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+
+        .cert-gallery img {
+            width: 100%;          
+            max-width: 520px;     
+            height: 360px;        
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            object-fit: contain;  
+            background-color: #f8fafc;
+            padding: 6px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+
+        /* --- APPENDIX (Footer Riwayat Akademik & Organisasi) --- */
+        .appendix {
+            background-color: #1e293b;
+            color: white;
+            padding: 12mm 20mm;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            page-break-inside: avoid;
+            break-inside: avoid;
+            margin-top: auto;
+            border-top: 3px solid #38bdf8;
+        }
+
+        .appx-col h5 {
+            font-size: 9.5pt;
+            color: #38bdf8;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 4px;
+            font-weight: 700;
+        }
+
+        .appx-item {
+            margin-bottom: 8px;
+        }
+
+        .appx-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .appx-item strong {
+            display: block;
+            font-size: 8.5pt;
+            color: white;
+        }
+
+        .appx-item span {
+            display: block;
+            font-size: 7.5pt;
+            color: #94a3b8;
+            margin-top: 1px;
+            line-height: 1.3;
+        }
+
+        /* --- PENGATURAN CETAK (PRINT / SAVE PDF) --- */
+        @media print {
+            @page {
+                size: A4 portrait;
+                margin: 0;
+            }
+            body {
+                background: none;
+                padding: 0;
+            }
+            .a4-page {
+                box-shadow: none;
+                width: 210mm;
+                min-height: 297mm;
+                border-radius: 0;
+                border: none;
+            }
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="a4-page">
+        
+        <!-- HEADER KREATIF -->
+        <header>
+            <img src="fotoprofil.jpeg" alt="Sigit Ali Fandi" class="profile-img">
+            <div class="header-info">
+                <h1>SIGIT ALI FANDI</h1>
+                <h2>Mahasiswa D4 Teknik Mekatronika | Embedded Systems, Automation & Robotics</h2>
+                <div class="contacts">
+                    <span>🏢 Politeknik Elektronika Negeri Surabaya (PENS)</span>
+                    <span>📩 <a href="mailto:sigitalifandi@me.student.pens.ac.id">sigitalifandi@me.student.pens.ac.id</a></span>
+                    <span>📞 <a href="https://wa.me/6288226257242" target="_blank">+62 882-2625-7242</a></span>
+                    <span>🔗 <a href="https://www.linkedin.com/in/sigitalifandi" target="_blank">linkedin.com/in/sigitalifandi</a></span>
+                </div>
+            </div>
+        </header>
+
+        <!-- PROFIL SINGKAT & KEAHLIAN -->
+        <div class="profile-bar">
+            <div>
+                <h3>Tentang Saya</h3>
+                <p class="about-text">
+                    Robotika, otomasi industri, dan desain mekanik adalah bidang yang paling menarik bagi saya. Sebagai mahasiswa D4 Teknik Mekatronika PENS angkatan 2024, saya senang mengerjakan proyek dari pemodelan 3D, perakitan, pemrograman kendali, hingga troubleshooting. Terbuka untuk magang, kerja, dan kolaborasi proyek.
+                </p>
+            </div>
+            <div>
+                <h3>Kompetensi & Keahlian</h3>
+                <div class="skills-list-text">
+                    <strong>Bidang:</strong> Mechanical Design • Robotics • Industrial Automation • Microcontroller<br>
+                    <strong>Pemrograman:</strong> C/C++ • PLC Programming (Ladder Diagram) • MATLAB<br>
+                    <strong>Software & Tools:</strong> Autodesk Inventor • Fusion 360 • Arduino IDE • Proteus • CX-Programmer
+                </div>
+            </div>
+        </div>
+
+        <!-- SHOWCASE PROYEK -->
+        <div class="showcase">
+            <div class="section-title">Daftar Proyek & Rancangan Utama</div>
+            <div class="project-list">
+                
+                <!-- Proyek 1 -->
+                <div class="project-row">
+                    <div class="project-image-container">
+                        <img src="proyek-selfbalancing.jpeg" alt="Self-Balancing Robot">
+                        <span class="project-badge">Robotics • Control</span>
+                    </div>
+                    <div class="project-details">
+                        <h4>Self-Balancing Robot</h4>
+                        <p>Robot beroda dua yang mampu menyeimbangkan diri secara otomatis dengan prinsip inverted pendulum. Sudut kemiringan dibaca oleh sensor IMU MPU6050, lalu diolah oleh kontrol PID pada ESP32 untuk mengatur motor melalui driver L298N. Sasis akrilik dirancang dalam 3D sebelum dibuat.</p>
+                        <div class="tech-stack">Tech: ESP32 • PID Control • MPU6050 • L298N • Acrylic Chassis</div>
+                        <div class="result-note">Hasil: Pembacaan sudut & kontrol PID berjalan. Tantangan pada penyetelan PID dan getaran motor untuk perbaikan berikutnya.</div>
+                    </div>
+                </div>
+
+                <!-- Proyek 2 -->
+                <div class="project-row">
+                    <div class="project-image-container">
+                        <img src="2-dof.jpeg" alt="2-DOF Robot Arm">
+                        <span class="project-badge">Eksplorasi Kinematika</span>
+                    </div>
+                    <div class="project-details">
+                        <h4>2-DOF Planar Robot Arm Kinematics</h4>
+                        <p>Mengembangkan program C++ menggunakan board OpenCM9.04 dan servo Dynamixel untuk menghitung Forward dan Inverse Kinematics, sehingga lengan robot dapat menggambar lintasan yang telah ditentukan.</p>
+                        <div class="tech-stack">Tech: C++ • OpenCM9.04 • Dynamixel Servos • Kinematics</div>
+                        <div class="result-note">Hasil: Lengan robot berhasil bergerak sesuai perhitungan kinematika dan mampu menggambar lintasan yang ditentukan, tetapi akurasinya masih dapat ditingkatkan, terutama pada bagian lintasan yang berbentuk lengkung.</div>
+                    </div>
+                </div>
+
+                <!-- Proyek 3 (HMI Mesin Kopi) -->
+                <div class="project-row">
+                    <div class="project-image-container">
+                        <img src="hmi-kopi.png" alt="HMI Touchscreen Design">
+                        <span class="project-badge">HMI Automation</span>
+                    </div>
+                    <div class="project-details">
+                        <h4>HMI Touchscreen Design for Automatic Coffee Vending Machine</h4>
+                        <p>Merancang antarmuka Human Machine Interface (HMI) menggunakan perangkat lunak EasyBuilder Pro untuk mengoperasikan mesin kopi otomatis. Desain mencakup halaman menu pilihan minuman, instruksi penggunaan, hingga simulasi proses pembuatan minuman berbasis koin secara interaktif.</p>
+                        <div class="tech-stack">Tech: EasyBuilder Pro • HMI Touchscreen • Industrial Automation</div>
+                        <div class="result-note">Hasil: Desain HMI berhasil diselesaikan dan dapat digunakan secara fungsional untuk mengontrol serta menavigasi proses pembuatan minuman dengan lancar.</div>
+                    </div>
+                </div>
+
+                <!-- Proyek 4 (Alarm Suhu) -->
+                <div class="project-row">
+                    <div class="project-image-container dual-image-small">
+                        <span class="project-badge">Desain Elektronika</span>
+                        <img src="alarm-1.png" alt="Alarm Suhu 1">
+                        <img src="alarm-2.jpeg" alt="Alarm Suhu 2">
+                    </div>
+                    <div class="project-details">
+                        <h4>Sistem Alarm Suhu Berbasis LM35</h4>
+                        <p>Merancang rangkaian kontrol analog terintegrasi untuk sistem peringatan dini suhu berlebih (overheat). Menggunakan sensor LM35 untuk pembacaan suhu dan op-amp LM741 untuk pengaturan set-point, lengkap dengan jalur PCB hasil desain mandiri.</p>
+                        <div class="tech-stack">Tech: Analog Electronics • LM35 • LM741 • PCB Layouting</div>
+                        <div class="result-note">Hasil: Rangkaian alarm berhasil berfungsi, namun kalibrasi set-point batas suhunya membutuhkan ketelitian ekstra karena sensitivitas komponen analog yang cukup rentan terhadap perubahan suhu sekitar.</div>
+                    </div>
+                </div>
+
+                <!-- Proyek 5 (Mesin CNC) -->
+                <div class="project-row">
+                    <div class="project-image-container">
+                        <img src="CNC Drawing Machine Pen Plotter.png" alt="CNC Plotter">
+                        <span class="project-badge">Mechanical Design</span>
+                    </div>
+                    <div class="project-details">
+                        <h4>Mesin CNC Pen Plotter</h4>
+                        <p>Mengaplikasikan hasil desain konseptual 3D ke dalam proses manufaktur perangkat keras. Fokus pengerjaan mencakup fabrikasi struktur mekanik, penyelarasan sasis, dan perakitan komponen pergerakan presisi (motor stepper & rel linear).</p>
+                        <div class="tech-stack">Tech: 3D CAD • Mechanical Assembly • Hardware Integration</div>
+                        <div class="result-note">Status: Model 3D tervalidasi dan saat ini sedang dalam proses perakitan komponen fisik sebelum tahap integrasi kelistrikan.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BAGIAN SERTIFIKAT -->
+            <div class="section-title" style="margin-top: 25px;">Kegiatan & Sertifikat</div>
+            <div class="project-list">
+                
+                <!-- Kegiatan 1: Lomba Karya Teknologi UNESA -->
+                <div class="activity-row">
+                    <div class="activity-header">
+                        <h4>Juara 3 Lomba Karya Teknologi Nasional (UNESA 2022)</h4>
+                        <p>Meraih Juara 3 dalam Lomba Karya Teknologi divisi Programmable Logic Controller tingkat nasional dengan tema "Inovasi dan Kreasi Untuk Masa Depan" Jenjang SMA/SMK Sederajat.</p>
+                        <div class="tech-stack">Penyelenggara: Himpunan Mahasiswa Jurusan Teknik Elektro, Fakultas Teknik UNESA</div>
+                    </div>
+                    <div class="cert-gallery">
+                        <img src="unesa.jpeg" alt="Sertifikat Juara 3 Lomba Karya Teknologi UNESA">
+                    </div>
+                </div>
+
+                <!-- Kegiatan 2: Sertifikat Kompetensi LSP P3 -->
+                <div class="activity-row">
+                    <div class="activity-header">
+                        <h4>Sertifikat Kompetensi LSP P3 (Pengoperasian Peralatan Elektronika Berbasis PLC)</h4>
+                        <p>Sertifikat keahlian profesi dan uji kompetensi di bidang pengoperasian peralatan elektronika berbasis Programmable Logic Controller (PLC) berlisensi BNSP.</p>
+                        <div class="tech-stack">Penyelenggara: Lembaga Sertifikasi Profesi Pihak Ketiga (LSP P3)</div>
+                    </div>
+                    <div class="cert-gallery">
+                        <img src="SMKN 1 CERME 2024_173.png" alt="Sertifikat LSP P3 PLC">
+                    </div>
+                </div>
+
+                <!-- Kegiatan 3: DEX Komdigi -->
+                <div class="activity-row">
+                    <div class="activity-header">
+                        <h4>Program Pelatihan Digital Expertise (DEX) 2026</h4>
+                        <p>Telah menyelesaikan serangkaian program sertifikasi kompetensi digital praktis di bidang rekayasa perangkat IoT dan administrasi jaringan komputer.</p>
+                        <div class="tech-stack">Penyelenggara: Komdigi RI × Politeknik Elektronika Negeri Surabaya</div>
+                    </div>
+                    <div class="cert-gallery">
+                        <img src="Sertifikat_SIGIT ALI FANDI_Fundamental of Associate Device Engineer (IoT) - DEX - Politeknik Elektronika Negeri Surabaya_Hal1.jpg" alt="DEX IoT Fundamental">
+                        <img src="Sertifikat_SIGIT ALI FANDI_Fundamental of Associate Network Administrator - DEX - Politeknik Elektronika Negeri Surabaya_Hal1.jpg" alt="DEX Net Admin Fundamental">
+                        <img src="Sertifikat_SIGIT ALI FANDI_Intermediate Associate Network Administrator - DEX - Politeknik Elektronika Negeri Surabaya_Hal1.jpg" alt="DEX Net Admin Intermediate">
+                        <img src="Sertifikat_SIGIT ALI FANDI_Fundamental of Associate Computer Network Technician - DEX - Politeknik Elektronika Negeri Surabaya_Hal1.jpg" alt="DEX Net Tech Fundamental">
+                        <img src="Sertifikat_SIGIT ALI FANDI_Intermediate Associate Computer Network Technician - DEX -Politeknik Elektronika Negeri Surabaya_Hal1.jpg" alt="DEX Net Tech Intermediate">
+                    </div>
+                </div>
+
+                <!-- Kegiatan 4: LKMM PENS -->
+                <div class="activity-row">
+                    <div class="activity-header">
+                        <h4>Latihan Keterampilan Manajemen Mahasiswa (LKMM) PENS</h4>
+                        <p>Telah menyelesaikan pelatihan manajemen dan kepemimpinan tingkat Pra-Dasar (2024) dan tingkat Dasar (2025).</p>
+                        <div class="tech-stack">Penyelenggara: Badan Eksekutif Mahasiswa (BEM) PENS</div>
+                    </div>
+                    <div class="cert-gallery">
+                        <img src="Latihan Ketrampilan Manajemen Mahasiswa Tingkat Pra Dasar PENS 2024.jpg" alt="Sertifikat LKMM Pra Dasar">
+                        <img src="Latihan Keterampilan Manajemen Mahasiswa Tingkat Dasar PENS 2025.jpg" alt="Sertifikat LKMM Dasar">
+                    </div>
+                </div>
+
+                <!-- Kegiatan 5: WEPC Polinema -->
+                <div class="activity-row">
+                    <div class="activity-header">
+                        <h4>Workshop Electro PLC Competition (WEPC) 2024</h4>
+                        <p>Berpartisipasi aktif sebagai peserta dalam kompetisi pemrograman Programmable Logic Controller (PLC) tingkat mahasiswa.</p>
+                        <div class="tech-stack">Penyelenggara: Workshop Electro Politeknik Negeri Malang</div>
+                    </div>
+                    <div class="cert-gallery">
+                        <img src="Workshop Electro PLC Competition (WEPC) 2024.jpg" alt="Sertifikat WEPC 2024">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- APPENDIX (Data Riwayat di Bawah) -->
+        <div class="appendix">
+            <div class="appx-col">
+                <h5>Pendidikan Akademik</h5>
+                <div class="appx-item">
+                    <strong>D4 Teknik Mekatronika (PENS)</strong>
+                    <span>2024 - Sekarang | Semester 5</span>
+                </div>
+                <div class="appx-item">
+                    <strong>Teknik Otomasi Industri</strong>
+                    <span>SMK Negeri 1 Cerme | 2020 - 2024</span>
+                </div>
+            </div>
+
+            <div class="appx-col">
+                <h5>Pengalaman Organisasi</h5>
+                <div class="appx-item">
+                    <strong>Ketua Umum Tapak Suci</strong>
+                    <span>Cabang Kebomas | 2024 - Sekarang</span>
+                    <span>Memimpin & mengevaluasi program kerja serta operasional anggota.</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
